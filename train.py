@@ -113,3 +113,20 @@ print("\nEvaluation results:\n", metrics_output)
 
 with open('metrics.txt', 'w', encoding='utf-8') as outfile:
     outfile.write(metrics_output)
+
+#Chart to compare accuracy for each class
+acc_per_class = []
+for i, label in enumerate(label_names):
+    idx = np.where(y_test_labels == i)
+    acc_class = np.mean(y_preds_labels[idx] == y_test_labels[idx])
+    acc_per_class.append(acc_class)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.figure(figsize=(10, 6))
+sns.barplot(x=label_names, y=acc_per_class, palette='viridis')
+plt.title('Accuracy per Class')
+plt.ylabel('Accuracy')
+plt.xlabel('Class')
+plt.xticks(rotation=45)
+plt.savefig('accuracy.png')
