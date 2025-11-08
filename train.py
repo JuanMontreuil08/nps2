@@ -113,3 +113,14 @@ print("\nEvaluation results:\n", metrics_output)
 
 with open('metrics.txt', 'w', encoding='utf-8') as outfile:
     outfile.write(metrics_output)
+
+# Plot to compare accuracy per class
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.figure(figsize=(8,6))
+sns.heatmap(conf_mat, annot=True, fmt='d', cmap='Blues',
+            xticklabels=label_names, yticklabels=label_names)
+plt.ylabel('Actual')
+plt.xlabel('Predicted')
+plt.title('Confusion Matrix')
+plt.savefig('confusion_matrix.png')
