@@ -20,3 +20,9 @@ jobs:
           echo "## Matriz de Confusión" >> report.md
           echo "![](./confusion_matrix.png)" >> report.md
           cml comment create report.md
+      - name: Upload report and plots
+        uses: actions/upload-artifact@v3
+        with:
+          name: model-report
+          path: |
+            accuracy.png
