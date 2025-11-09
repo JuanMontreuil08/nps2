@@ -125,7 +125,7 @@ for i, label in enumerate(label_names):
 
 plt.figure(figsize=(10, 6))
 sns.barplot(x=label_names, y=acc_per_class, palette='viridis')
-plt.title('Accuracy per Class')
+plt.title('Accuracy per Class.')
 plt.ylabel('Accuracy')
 plt.xlabel('Class')
 plt.xticks(rotation=45)
