@@ -14,9 +14,8 @@ jobs:
           pip install -r requirements.txt
           python train.py
 
+          accuracy_url=$(cml asset publish accuracy.png)
           cat metrics.txt >> report.md
-          echo "![](./plot.png)" >> report.md
           echo "" >> report.md
-          echo "## Matriz de Confusión" >> report.md
-          echo "![](./confusion_matrix.png)" >> report.md
-          cml comment create report.md
+          echo "## Accuracy Plot" >> report.md
+          echo "![](${accuracy_url})" >> report.md
